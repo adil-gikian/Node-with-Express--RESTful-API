@@ -1,0 +1,46 @@
+var express = require('express');
+var bodyParser = require('body-parser');
+var app = express();
+
+var port = process.env.PORT || 3000;
+
+//setting the view engine
+app.set('view engine', 'ejs');
+
+//using body-parser middleware to parse POST parameters and attach them to request's body
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
+//middleware for downloading static files automatically
+app.use('/assets', express.static(__dirname + '/public'));
+
+//custom middleware
+app.use('/', function(req, res, next) {
+    console.log(req.url);
+    next();
+});
+
+app.get('/', function(req, res) {
+    res.render('index');
+});
+
+app.get('/user/:id', function(req, res) {
+    res.render('user', {ID: req.params.id});
+});
+
+app.get('/person/:id', function(req, res) {
+    res.render('user', {ID: req.params.id, name: req.query.name});
+})
+
+app.get('/submit', function(req, res) {
+    res.render('person');
+})
+
+//urlencodedParser is passed as a callback function for parsing form data. json parser is also available for json data
+app.post('/submit', urlencodedParser, function(req, res) {
+    res.send('Thank You');
+    console.log(req)
+})
+
+//express router is diverse and mature. see the documentation guide for more options
+app.listen(port);
+

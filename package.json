@@ -1,0 +1,26 @@
+{
+  "name": "express-app",
+  "version": "1.0.0",
+  "description": "A sample application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adil-gikian/Node-with-Express.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adil-gikian/Node-with-Express/issues"
+  },
+  "homepage": "https://github.com/adil-gikian/Node-with-Express#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "mongoose": "^4.5.10",
+    "mysql": "^2.11.1"
+  }
+}
